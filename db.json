@@ -1,19 +1,34 @@
 {
-  "posts": [
+  "ALL": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "id": "ITEM1",
+      "title": "h1"
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": "ITEM1",
+      "title": "h1"
+    },
+    {
+      "id": "ITEM1",
+      "title": "h1"
+    },
+    {
+      "id": "ITEM1",
+      "title": "h1"
+    },
+    {
+      "id": "ITEM1",
+      "title": "h1"
+    },
+    {
+      "id": "ITEM2",
+      "title": "h1"
+    },
+    {
+      "id": "ITEM3"
+    },
+    {
+      "id": "ITEM4"
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
