@@ -1,36 +1,29 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import { Typography } from "@mui/material";
+import { axiosList } from "../../redux/modules/axiosSlice";
+import { Dispatch, useDispatch, useSelector } from "react-redux";
 
 export default function MainCard({ categories }) {
-  const [list, setList] = useState([]);
-  console.log(list);
-
-  const fetchALL = async () => {
-    axios
-      .get("http://localhost:3001/ALL")
-      .then((response) => {
-        setList(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  const dispatch = useDispatch();
+  const lists = useSelector((state) => {
+    return state.axiosSlice.SOOL;
+  });
+  console.log("list", lists);
 
   useEffect(() => {
-    fetchALL();
-  }, []);
+    dispatch(axiosList());
+  }, [dispatch]);
 
   return (
     <div>
       {categories !== "all" ? (
         <Griddiv>
-          {list
+          {lists
             .filter((item) => item.categories === categories) //? optionalchaning
             .map((item) => {
               return (
-                <WrapCarddiv>
+                <WrapCarddiv key={item.id}>
                   <MainCardImg src={item.img} alt="" />
                   <p>{item.title}</p>
                   <p>{item.contents}</p>
@@ -40,12 +33,12 @@ export default function MainCard({ categories }) {
         </Griddiv>
       ) : (
         <Griddiv>
-          {list
+          {lists
             .filter((item) => item.categories !== categories) //? optionalchaning
             .map((item) => {
               return (
-                <WrapCarddiv>
-                  <img src={item.img} alt="" />
+                <WrapCarddiv key={item.id}>
+                  <MainCardImg src={item.img} alt="" />
                   <p>{item.title}</p>
                   <p>{item.contents}</p>
                 </WrapCarddiv>

@@ -63,7 +63,7 @@ export default function Menu({ childern }) {
       </Box>
       <PanelDiv>
         <TabPanel value={value} index={0}>
-          <MainCard />
+          <MainCard categories="all" />
         </TabPanel>
         <TabPanel value={value} index={1}>
           <MainCard categories="soju" />
