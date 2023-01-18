@@ -17,7 +17,7 @@ const WrapDiv = styled.div`
   align-items: center;
 `;
 
-const TitleText = styled.p`
+const TitleText = styled.div`
   font-size: 28px;
   font-weight: bold;
 `;

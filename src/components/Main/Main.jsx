@@ -5,20 +5,11 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import MainTitle from "../MainTitle/MainTitle";
+import MainCard from "./MainCard";
+import MoreButton from "../Buttons/MoreButton";
 
 export default function Menu({ childern }) {
-  const [list, setList] = useState();
   const [value, setValue] = useState(0);
-
-  const fetchALL = async () => {
-    const { data } = await axios.get("http://localhost:3001/ALL");
-    console.log(data);
-    setList(data);
-  };
-
-  useEffect(() => {
-    fetchALL();
-  }, []);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -64,39 +55,48 @@ export default function Menu({ childern }) {
         {/* 메인페이지 항목별 탭 */}
         <Tabs centered value={value} onChange={handleChange}>
           <SizeTab label="ALL" {...a11yProps(0)} />
-          <SizeTab label="ITEM1" {...a11yProps(1)} />
-          <SizeTab label="ITEM2" {...a11yProps(2)} />
-          <SizeTab label="ITEM3" {...a11yProps(3)} />
-          <SizeTab label="ITEM4" {...a11yProps(4)} />
+          <SizeTab label="SOJU" {...a11yProps(1)} />
+          <SizeTab label="BEER" {...a11yProps(2)} />
+          <SizeTab label="WHISKY" {...a11yProps(3)} />
+          <SizeTab label="WINE" {...a11yProps(4)} />
         </Tabs>
-
+      </Box>
+      <PanelDiv>
         <TabPanel value={value} index={0}>
-          all
+          <MainCard />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          1
+          <MainCard categories="soju" />
         </TabPanel>
         <TabPanel value={value} index={2}>
-          2
+          <MainCard categories="beer" />
         </TabPanel>
         <TabPanel value={value} index={3}>
-          3
+          <MainCard categories="whisky" />
         </TabPanel>
         <TabPanel value={value} index={4}>
-          4
+          <MainCard categories="wine" />
         </TabPanel>
-        {/* 위 탭을 클릭시 해당아이탬을 랜더링 */}
-      </Box>
+      </PanelDiv>
+      <MoreButton />
+      {/* 위 탭을 클릭시 해당아이탬을 랜더링 */}
     </Warpdiv>
   );
 }
 
 const Warpdiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-top: 30px;
   width: 100%;
-  height: 1000px;
 `;
 
 const SizeTab = styled(Tab)`
   width: 180px;
+`;
+
+const PanelDiv = styled.div`
+  width: 100%;
 `;
