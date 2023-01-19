@@ -1,27 +1,22 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { boardList } from "../../redux/modules/boardSlice";
 
 export default function BoardList() {
-  const [list, setList] = useState([]); // axios로 불러온데이터를 넣어줄때 초기의값은 빈대괄호[] 를 꼭넣어줘야 undefind가 뜨지않음
-  const fetchALL = async () => {
-    axios
-      .get("http://localhost:3001/ALL")
-      .then((response) => {
-        setList(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  const dispatch = useDispatch();
+  const lists = useSelector((state) => {
+    return state.boardSlice.BOARD;
+  });
 
   useEffect(() => {
-    fetchALL();
-  }, []);
+    dispatch(boardList());
+  }, [dispatch]);
 
   return (
     <WrapDiv>
-      {list
+      {lists
         .filter((item) => {
           return item.id === item.userid;
         })

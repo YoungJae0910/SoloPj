@@ -1,16 +1,23 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../../assets/logo.png";
 
 export default function Header() {
   return (
     <WarpDiv>
-      <ImgDiv>
-        <img src={logo} alt="" />
-      </ImgDiv>
+      <Link to={"/"}>
+        <ImgDiv>
+          <img src={logo} alt="" />
+        </ImgDiv>
+      </Link>
       <ButtonDiv>
-        <ButtonBtn>Menu</ButtonBtn>
-        <ButtonBtn>Borad</ButtonBtn>
+        <Link to={"/menu"}>
+          <ButtonBtn>Menu</ButtonBtn>
+        </Link>
+        <Link to={"/"}>
+          <ButtonBtn>Borad</ButtonBtn>
+        </Link>
       </ButtonDiv>
     </WarpDiv>
   );

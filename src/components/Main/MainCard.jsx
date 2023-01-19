@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import styled from "styled-components";
 import { axiosList } from "../../redux/modules/axiosSlice";
 import { Dispatch, useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function MainCard({ categories }) {
   const dispatch = useDispatch();
   const lists = useSelector((state) => {
     return state.axiosSlice.SOOL;
   });
-  console.log("list", lists);
 
   useEffect(() => {
     dispatch(axiosList());
@@ -23,11 +22,13 @@ export default function MainCard({ categories }) {
             .filter((item) => item.categories === categories) //? optionalchaning
             .map((item) => {
               return (
-                <WrapCarddiv key={item.id}>
-                  <MainCardImg src={item.img} alt="" />
-                  <p>{item.title}</p>
-                  <p>{item.contents}</p>
-                </WrapCarddiv>
+                <StyleLink to={"/menudetails"}>
+                  <WrapCarddiv key={item.id}>
+                    <MainCardImg src={item.img} alt="" />
+                    <p>{item.title}</p>
+                    <p>{item.contents}</p>
+                  </WrapCarddiv>
+                </StyleLink>
               );
             })}
         </Griddiv>
@@ -37,11 +38,13 @@ export default function MainCard({ categories }) {
             .filter((item) => item.categories !== categories) //? optionalchaning
             .map((item) => {
               return (
-                <WrapCarddiv key={item.id}>
-                  <MainCardImg src={item.img} alt="" />
-                  <p>{item.title}</p>
-                  <p>{item.contents}</p>
-                </WrapCarddiv>
+                <StyleLink to={"/menudetails"}>
+                  <WrapCarddiv key={item.id}>
+                    <MainCardImg src={item.img} alt="" />
+                    <p>{item.title}</p>
+                    <p>{item.contents}</p>
+                  </WrapCarddiv>
+                </StyleLink>
               );
             })}
         </Griddiv>
@@ -71,4 +74,9 @@ const Griddiv = styled.div`
 const MainCardImg = styled.img`
   width: 200px;
   height: 220px;
+`;
+
+const StyleLink = styled(Link)`
+  text-decoration: none;
+  color: black;
 `;

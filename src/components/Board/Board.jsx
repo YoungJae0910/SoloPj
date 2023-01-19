@@ -2,7 +2,6 @@ import React from "react";
 import MainTitle from "../MainTitle/MainTitle";
 import styled from "styled-components";
 import BoardList from "./BoardList";
-import MoreButton from "../Buttons/MoreButton";
 
 export default function Board() {
   return (
@@ -11,14 +10,13 @@ export default function Board() {
         <MainTitle>Board</MainTitle>
         <BoardList />
       </WrapInnerDiv>
-      <MoreButton />
     </WrapDiv>
   );
 }
 
 const WrapDiv = styled.div`
   width: 100%;
-  height: 800px;
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;

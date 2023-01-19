@@ -6,7 +6,6 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import MainTitle from "../MainTitle/MainTitle";
 import MainCard from "./MainCard";
-import MoreButton from "../Buttons/MoreButton";
 
 export default function Menu({ childern }) {
   const [value, setValue] = useState(0);
@@ -78,7 +77,6 @@ export default function Menu({ childern }) {
           <MainCard categories="wine" />
         </TabPanel>
       </PanelDiv>
-      <MoreButton />
       {/* 위 탭을 클릭시 해당아이탬을 랜더링 */}
     </Warpdiv>
   );

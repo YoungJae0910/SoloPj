@@ -1,18 +1,10 @@
 import "./App.css";
-import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
-import MainSlide from "./components/MainSlide/MainSlide";
-import Main from "./components/Main/Main";
-import Board from "./components/Board/Board";
+import Router from "./routes/Router";
 
 function App() {
   return (
     <>
-      <Header />
-      <MainSlide />
-      <Main />
-      <Board />
-      <Footer />
+      <Router />
     </>
   );
 }
