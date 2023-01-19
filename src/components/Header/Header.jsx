@@ -8,7 +8,7 @@ export default function Header() {
     <WarpDiv>
       <Link to={"/"}>
         <ImgDiv>
-          <img src={logo} alt="" />
+          <LogoIcon src={logo} alt="" />
         </ImgDiv>
       </Link>
       <ButtonDiv>
@@ -29,6 +29,7 @@ const WarpDiv = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1.5px solid rgb(211, 211, 211);
 `;
 
 const ImgDiv = styled.div`
@@ -54,4 +55,8 @@ const ButtonBtn = styled.button`
   border: none;
   cursor: pointer;
   border-radius: 20px;
+`;
+
+const LogoIcon = styled.img`
+  width: 60%;
 `;

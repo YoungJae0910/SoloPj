@@ -5,6 +5,7 @@ import MainPage from "../Page/MainPage";
 import Footer from "../components/Footer/Footer";
 import MenuPage from "../Page/MenuPage";
 import MenuDetailPage from "../Page/MenuDetailPage";
+import MenuDetail from "../components/MenuDetail/MenuDetail";
 
 export default function Router() {
   return (
@@ -13,7 +14,8 @@ export default function Router() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/menu" element={<MenuPage />} />
-        <Route path="/menudetails" element={<MenuDetailPage />} />
+        <Route path="/menudetail/:id" element={<MenuDetailPage />} />
+        {/* params설정 : route 자체에서 path값에 /:id를 준다 */}
       </Routes>
       <Footer />
     </BrowserRouter>

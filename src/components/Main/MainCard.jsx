@@ -3,16 +3,13 @@ import styled from "styled-components";
 import { axiosList } from "../../redux/modules/axiosSlice";
 import { Dispatch, useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function MainCard({ categories }) {
-  const dispatch = useDispatch();
+  const navigate = useNavigate(); //Parms 설정에대한
   const lists = useSelector((state) => {
     return state.axiosSlice.SOOL;
   });
-
-  useEffect(() => {
-    dispatch(axiosList());
-  }, [dispatch]);
 
   return (
     <div>
@@ -22,13 +19,16 @@ export default function MainCard({ categories }) {
             .filter((item) => item.categories === categories) //? optionalchaning
             .map((item) => {
               return (
-                <StyleLink to={"/menudetails"}>
-                  <WrapCarddiv key={item.id}>
-                    <MainCardImg src={item.img} alt="" />
-                    <p>{item.title}</p>
-                    <p>{item.contents}</p>
-                  </WrapCarddiv>
-                </StyleLink>
+                <WrapCarddiv
+                  key={item.id}
+                  onClick={() => {
+                    navigate(`/menudetail/${item.id}`);
+                  }}
+                >
+                  <MainCardImg src={item.img} alt="" />
+                  <p>{item.name}</p>
+                  <p>{item.title}</p>
+                </WrapCarddiv>
               );
             })}
         </Griddiv>
@@ -38,13 +38,16 @@ export default function MainCard({ categories }) {
             .filter((item) => item.categories !== categories) //? optionalchaning
             .map((item) => {
               return (
-                <StyleLink to={"/menudetails"}>
-                  <WrapCarddiv key={item.id}>
-                    <MainCardImg src={item.img} alt="" />
-                    <p>{item.title}</p>
-                    <p>{item.contents}</p>
-                  </WrapCarddiv>
-                </StyleLink>
+                <WrapCarddiv
+                  key={item.id}
+                  onClick={() => {
+                    navigate(`/menudetail/${item.id}`);
+                  }}
+                >
+                  <MainCardImg src={item.img} alt="" />
+                  <p>{item.name}</p>
+                  <p>{item.title}</p>
+                </WrapCarddiv>
               );
             })}
         </Griddiv>
