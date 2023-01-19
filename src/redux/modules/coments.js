@@ -1,3 +1,5 @@
+import { v4 as uuid } from "uuid";
+
 const ADD_COMMENT = "ADD_COMMENT";
 
 export function addComments(payload) {
@@ -9,18 +11,21 @@ export function addComments(payload) {
 
 const initialState = [
   {
-    id: 1,
+    id: "사..살려주시라요",
     title: "hi1",
+    passward: uuid(),
     contents: "hello world1",
   },
   {
-    id: 2,
+    id: "사..살려주시라요",
     title: "hi2",
+    passward: uuid(),
     contents: "hello world2",
   },
   {
-    id: 3,
+    id: "사..살려주시라요",
     title: "hi3",
+    passward: uuid(),
     contents: "hello world3",
   },
 ];

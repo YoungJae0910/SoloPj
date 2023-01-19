@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { addComments } from "../../redux/modules/coments";
+import { v4 as uuid } from "uuid";
+import axios from "axios";
 
 export default function Coment() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [id, setId] = useState();
   const [passward, setPassward] = useState();
   const [contents, setContents] = useState();
@@ -20,20 +22,30 @@ export default function Coment() {
     setContents(event.target.value);
   };
 
-  const handleSubmitClick = (event) => {
-    event.preventDefault();
+  // const handleSubmitClick = (event) => {
+  //   event.preventDefault();
 
-    const newComment = {
-      id,
-      passward,
-      contents,
-    };
-    console.log(newComment);
+  //   const newComment = {
+  //     id,
+  //     passward: uuid(),
+  //     contents,
+  //   };
+  //   console.log(newComment);
 
-    dispatch(addComments(newComment));
-    setId("");
-    setPassward("");
-    setContents("");
+  //   dispatch(addComments(newComment));
+  //   setId("");
+  //   setPassward("");
+  //   setContents("");
+  // };
+
+  const newComment = {
+    id: uuid(),
+    passward,
+    contents,
+  };
+
+  const addComment = async (newComment) => {
+    await axios.post("http://localhost:3001/comment", newComment);
   };
 
   return (
@@ -62,7 +74,7 @@ export default function Coment() {
           value={contents}
           onChange={contentsHandler}
         />
-        <ComentBtn onClick={handleSubmitClick}>Done..</ComentBtn>
+        <ComentBtn onClick={addComment}>Done..</ComentBtn>
       </ComentDiv>
     </WrapDiv>
   );
