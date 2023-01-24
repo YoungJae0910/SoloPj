@@ -5,15 +5,12 @@ import { axiosList } from "../../redux/modules/axiosSlice";
 import { useParams } from "react-router-dom";
 
 export default function MenuDetail() {
-  //post 자체를 스테이트에 저장을해줘야한다
   const [post, setPost] = useState([]);
   const dispatch = useDispatch();
   const param = useParams();
   const lists = useSelector((state) => {
     return state.axiosSlice.SOOL;
   });
-
-  console.log(lists);
 
   useEffect(() => {
     dispatch(axiosList());

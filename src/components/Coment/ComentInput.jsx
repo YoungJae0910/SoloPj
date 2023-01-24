@@ -11,7 +11,6 @@ export default function Coment() {
   const [passward, setPassward] = useState();
   const [contents, setContents] = useState();
 
-  console.log(id, passward, contents);
   const idHandler = (event) => {
     setId(event.target.value);
   };
@@ -44,7 +43,8 @@ export default function Coment() {
     contents,
   };
 
-  const addComment = async (newComment) => {
+  const addComment = async () => {
+    console.log(newComment);
     await axios.post("http://localhost:3001/comment", newComment);
   };
 

@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { Reducer } from "@reduxjs/toolkit";
 
 const initialState = {
   comment: [],

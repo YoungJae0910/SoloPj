@@ -13,11 +13,13 @@ export default function ComentList() {
     dispatch(commentList());
   }, [dispatch]);
 
-  console.log("제발", comments);
-
+  // {categories !== "all" ? ():()}
   return (
     <div>
       {comments.map((item) => {
+        console.log(typeof item.id);
+        console.log(typeof item.passward);
+        console.log(typeof item.contents);
         return (
           <WrapDiv>
             <div>{item.id}</div>
